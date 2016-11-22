@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Java8 training</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/sky.css">
@@ -32,6 +32,8 @@
 						## Agenda
 						
 						* [Interface improvements](#interface-improvements)
+						* [Lambdas](#lambdas)
+						* [Stream API](#stream-api)
 					</script>
 				</section>
 				<section id="interface-improvements">
@@ -46,9 +48,10 @@
 						* still no data members in interfaces
 					</script>
 					</section>
+					
 					<section data-markdown>
 					<script type="text/template">
-						### Common usecase for default methods
+						### Common usecases for default methods
 						
 						In Java7 the following is a commmon design pattern:
 						* we create an `IWhatever` interface which is supposed to have more than one concrete implementation
@@ -57,6 +60,91 @@
 						* all concrete implementations extend the `AbstractWhatever class`  
 						
 						In Java8 the class hierarchy can be flattened with default implementations
+					</script>
+					</section>
+					
+					<section data-markdown>
+					<script type="text/template">
+						### Examples
+						
+					
+	interface DefaultImpl {
+	
+		static void myStaticMethod() {
+			System.out.println("DefaultImpl.myStaticMethod()");
+		}
+	
+		// static void myAbstractStaticMethod();
+	
+		void myAbstractMethod();
+	
+		default void myMethod() {
+			System.out.println("DefaultImpl.myMethod()");
+		}
+	
+		default void myMethod2() {
+			System.out.println("DefaultImpl.myMethod2()");
+		}
+
+	}
+					
+					</script>
+					</section>
+					
+				</section>
+				
+				<section>
+					<section  id="lambdas" data-markdown>
+						<script type="text/template">
+							## Functional interfaces
+							
+							* the term existed in the java jargon also before java8: it denotes an interface with 1 method
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Effectively final
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Type inference
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Method references
+						</script>
+					</section>
+				</section>
+				
+				<section>
+					<section id="stream-api" data-markdown>
+					<script type="text/template">
+						## Stream API
+							
+						* basically it is for in-memory processing of collections
+						* replaces `for ... if .... for ... if` pyramids
+						* it is a functional data processing API to be used with lambdas
+					</script>
+					</section>
+					
+					<section data-markdown>
+					<script type="text/template">
+						The `java.util.stream.Stream` class is more similar to an iterator than a collection:
+						* it usually doesn't store all of its elements
+						* a `Stream` instance is for one-time use, it processes all members of its source only once
+						* it doesn't necesssarily have to be finite. Infinite data streams can be simply constructed 
+					</script>
+					</section>
+					
+					<section data-markdown>
+					<script type="text/template">
+						Stream instantiation:
+						
+						* usually with the `Collection#stream()`
+						* stream of an array entry: with `Arrays#stream(Object[])`
+						* and some IO-related static factory methods:
 					</script>
 					</section>
 				</section>
