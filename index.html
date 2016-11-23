@@ -120,6 +120,7 @@
 								single abstract method
 							* this is how java8 becomes a multi-paradigm programming language (both OO and functional)
 							* the stream API heavily uses functional interfaces
+							* `@FunctionalInterface`
 						</script>
 					</section>
 					
@@ -276,7 +277,7 @@
 							* intermediate
 							* terminal
 						  operators
-						* nonterminals are lazy-evaluating
+						* intermediate ops are lazy-evaluating
 						* terminals pull stream elements one by one, if/when they need it. Elements
 							not pulled by the terminal are not processed by any of the nonterminals
 					</script>
@@ -312,9 +313,9 @@
 					<script type="text/template">
 						### Frequently used terminal operators
 						
-						* forEach( Consumer<T> ) 
-						* findFirst() / findAny()
-						* collect()
+						* `forEach( Consumer<T> )`
+						* `findFirst()` / `findAny()`
+						* `collect()`
 					</script>
 					</section>
 					
@@ -336,7 +337,7 @@
 					<script type="text/template">
 						## What is it for?
 						
-						* it is intended to be used for wrapping a nullable result of a computation
+						* it is intended to be used for wrapping a nullable result of a computation, like `getWhateverById()` methods
 						* it is not for wrapping optional bean properties - naive getters should never return Optionals
 						* it is also not for expressing the optionality of a method parameter - use overloading instead 
 					</script>
@@ -370,7 +371,12 @@
 						## Usage - unwrapping
 	Optional<PKBPerson> opt = ...
 	// supplier returning default value
-	PKBPerson person = opt.orElseGet(someOtherDataSource::getPerson); 
+	PKBPerson person = opt.orElseGet(someOtherDataSource::getPerson);
+
+&nbsp;
+
+	
+(reminder: `Supplier<T>` : () -> T)
 					</script>
 					</section>
 					
